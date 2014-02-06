@@ -1,0 +1,26 @@
+#######################################
+# Syntax Coloring Map DS18B20
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DS18B20	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+begin	KEYWORD2
+request	KEYWORD2
+available	KEYWORD2
+readTemperature	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+TEMP_ERROR	LITERAL1
+FA	LITERAL1
+E	LITERAL1
+TE	LITERAL1
