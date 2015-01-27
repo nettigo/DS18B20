@@ -11,10 +11,7 @@
 
 - It does not support hardware alarms (nobody cares ;-))
 
-### Dependencies:
-OneWire library: [http://www.pjrc.com/teensy/td_libs_OneWire.html](http://www.pjrc.com/teensy/td_libs_OneWire.html)
-
-### Example:
+### Example
 
 <pre>
 <span style="color: #7E7E7E;">//&nbsp;Asynchronously&nbsp;reads&nbsp;the&nbsp;temperature&nbsp;from&nbsp;sensor&nbsp;DS18B20</span>

@@ -6,7 +6,7 @@ void __check(bool value, uint16_t line)
 {
   if (value)
     return;
-    
+
   Serial.print(F("EXCEPTION at line: "));
   Serial.println(line);
   while(1);
@@ -26,7 +26,7 @@ DS18B20::DS18B20(OneWire *oneWire)
 
 // Setup for all ds19b20 sensors in 1-Wire bus.
 // Argument: quality - measurement resolution in bits (from 9 to 12)
-// Return: 
+// Return:
 // true - if all operations were successful
 // false - when the bus is physically damaged
 //       - when devices not respond
@@ -40,7 +40,7 @@ bool DS18B20::begin(uint8_t quality)
   uint8_t parasiteDevices = 0;
 
   uint32_t beginResetTimeout = millis();
-  
+
   while(!_oneWire->reset())
   {
     uint32_t elapsedResetTimeout = millis() - beginResetTimeout;
@@ -240,7 +240,7 @@ bool DS18B20::_receivePowerType(uint8_t *address)
 
 void DS18B20::_readFlashAddress(const __FlashStringHelper *_address, uint8_t *address)
 {
-  const prog_uchar *pgmAddress PROGMEM = (const prog_uchar PROGMEM *) _address;
+  const uint8_t *pgmAddress PROGMEM = (const uint8_t PROGMEM *) _address;
 
   for (uint8_t i=0; i<8; i++)
   {
