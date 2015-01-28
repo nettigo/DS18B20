@@ -1,17 +1,5 @@
 #include "DS18B20.h"
 
-// Exception handler
-// Prints the line number of the exception and block the program, when the function returns false
-void __check(bool value, uint16_t line)
-{
-  if (value)
-    return;
-
-  Serial.print(F("EXCEPTION at line: "));
-  Serial.println(line);
-  while(1);
-}
-
 // Constructor
 // Argument: Pointer to OneWire object
 // Return: New DS18B20 object
@@ -121,19 +109,6 @@ bool DS18B20::request(uint8_t *address)
   return true;
 }
 
-// Request for temperature measurements on device
-// Argument: Pointer to an array in flash memory of device address
-// Return:
-// - true - if operation were successful
-// - false - if device not responding
-bool DS18B20::request(const __FlashStringHelper *_address)
-{
-  uint8_t address[8];
-  _readFlashAddress(_address, address);
-
-  return request(address);
-}
-
 // Checks if devices completed the measurement
 // Return:
 // - true - the measurement was completed
@@ -186,22 +161,6 @@ float DS18B20::readTemperature(uint8_t *address)
   return raw * quality[_quality-9];
 }
 
-// Read temperature from device
-// Argument: Pointer to an array in flash memory of device address
-// Return: temperature in degrees Celsius
-// If the temperature is TEMP_ERROR value - measurement failed because:
-// - the bus is physically damaged
-// - devices not respond
-// - when data from the device is not valid
-// - when not detect device of thad address
-float DS18B20::readTemperature(const __FlashStringHelper *_address)
-{
-  uint8_t address[8];
-  _readFlashAddress(_address, address);
-
-  return readTemperature(address);
-}
-
 // private methods
 bool DS18B20::_sendCommand(uint8_t *address, uint8_t command)
 {
@@ -236,14 +195,4 @@ bool DS18B20::_receivePowerType(uint8_t *address)
   _sendCommand(address, 0xb4);
 
   return _oneWire->read();
-}
-
-void DS18B20::_readFlashAddress(const __FlashStringHelper *_address, uint8_t *address)
-{
-  const uint8_t *pgmAddress PROGMEM = (const uint8_t PROGMEM *) _address;
-
-  for (uint8_t i=0; i<8; i++)
-  {
-    address[i] = pgm_read_byte(pgmAddress++);
-  }
 }

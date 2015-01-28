@@ -4,7 +4,6 @@
 
 - Easy
 - Async
-- Sensor adresses in SRAM or Flash memory
 - Easy debug with exceptions
 
 ### Disadvantages
@@ -106,13 +105,13 @@ Setup for all ds19b20 sensors in 1-Wire bus.
 
 Argument: quality - measurement resolution in bits (from 9 to 12)
 
-Return: 
+Return:
 
-true 
+true
 
 - if all operations were successful
 
-false 
+false
 - when the bus is physically damaged
 - when devices not respond
 - when device address is not valid
@@ -126,11 +125,11 @@ Request for temperature measurements on all devices
 
 Return:
 
-true 
+true
 
 - if operation were successful
 
-false 
+false
 
 - if devices have different ways of power (combinations of normal and parasite in one bus)
 - if devices not responding
@@ -144,11 +143,11 @@ Request for temperature measurements on device
 Argument: Pointer to an array of device address
 
 Return:
-true 
+true
 
 - if operation were successful
 
-false 
+false
 
 - if device not responding
 
@@ -162,11 +161,11 @@ Argument: Pointer to an array in flash memory of device address
 
 Return:
 
-true 
+true
 
 - if operation were successful
 
-false 
+false
 
 - if device not responding
 
@@ -178,11 +177,11 @@ Checks if devices completed the measurement
 
 Return:
 
-true 
+true
 
 - the measurement was completed
 
-false 
+false
 
 - the measurement wasn't completed
 
@@ -237,4 +236,3 @@ Checks for errors and prints it on Serial Monitor with line number
 </pre>
 Teperature value exception catcher
 Checks the wrong temperature and prints it on Serial Monitor with line number
-
