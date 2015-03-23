@@ -8,8 +8,8 @@ const byte ONEWIRE_PIN = 2;
 
 // Sensor address
 // EXAMPLE:
-// prog_uchar sensorAddress[8] PROGMEM = {0x28, 0xB1, 0x6D, 0xA1, 0x3, 0x0, 0x0, 0x11};
-prog_uchar sensorAddress[8] PROGMEM = {/* Your sensor address here */};
+// const byte sensorAddress[8] PROGMEM = {0x28, 0xB1, 0x6D, 0xA1, 0x3, 0x0, 0x0, 0x11};
+const byte sensorAddress[8] PROGMEM = {/* Your sensor address here */};
 
 
 // 1-Wire object
@@ -21,11 +21,11 @@ void setup() {
   // Serial port setup
   while(!Serial);
   Serial.begin(9600);
-  
+
   // DS18B20 sensors setup
   // *** E() checks for errors and prints it on Serial Monitor with line number
   E(sensors.begin());
-  
+
   // The first requests sensor for measurement
   // Address from Flash memory
   // *** E() checks for errors and prints it on Serial Monitor with line number
@@ -39,19 +39,19 @@ void loop() {
     // Reads the temperature from sensor
     // *** Address from Flash memory
     float temperature = sensors.readTemperature(FA(sensorAddress));
-    
+
     // *** TE() checks the wrong temperature and prints it on Serial Monitor with line number
     TE(temperature);
-    
+
     // Prints the temperature on Serial Monitor
     Serial.print(temperature);
     Serial.println(F(" 'C"));
-    
+
     // Another requests sensor for measurement
     // Address from Flash memory
     // *** E() checks for errors and prints it on Serial Monitor with line number
     E(sensors.request(FA(sensorAddress)));
   }
-  
+
   // Here, put your code performs without delay
 }

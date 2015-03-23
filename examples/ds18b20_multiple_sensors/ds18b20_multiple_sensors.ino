@@ -11,12 +11,12 @@ const byte SENSORS_NUM = /* number */;
 
 // Sensors address
 // EXAMPLE:
-// prog_uchar sensorsAddress[SENSORS_NUM][8] PROGMEM = {
+// const byte sensorsAddress[SENSORS_NUM][8] PROGMEM = {
 //     0x28, 0xB1, 0x6D, 0xA1, 0x3, 0x0, 0x0, 0x11,
 //     0x28, 0x87, 0x6A, 0xA1, 0x3, 0x0, 0x0, 0x1F
 // };
 
-prog_uchar sensorsAddress[SENSORS_NUM][8] PROGMEM = {
+const byte sensorsAddress[SENSORS_NUM][8] PROGMEM = {
     /* Your #1 sensor address here,
        Your #2 sensor address here,
     ...*/
@@ -32,10 +32,10 @@ void setup() {
   // Serial port setup
   while(!Serial);
   Serial.begin(9600);
-  
+
   // DS18B20 sensors setup
   sensors.begin();
-  
+
   // The first requests to all sensors for measurement
   sensors.request();
 }
@@ -49,7 +49,7 @@ void loop() {
       // Reads the temperature from sensor
       // *** Indexed address from Flash memory
       float temperature = sensors.readTemperature(FA(sensorsAddress[i]));
-      
+
       // Prints the temperature on Serial Monitor
       Serial.print(F("#"));
       Serial.print(i);
@@ -57,10 +57,10 @@ void loop() {
       Serial.print(temperature);
       Serial.println(F(" 'C"));
     }
-    
+
     // Another requests to all sensors for measurement
     sensors.request();
   }
-  
+
   // Here, put your code performs without delay
 }
