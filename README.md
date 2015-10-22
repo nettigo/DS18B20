@@ -1,6 +1,6 @@
 # DS18B20 sensor library for Arduino
 
-### Adventages:
+### Advantages:
 
 - Easy
 - Async
@@ -9,7 +9,7 @@
 
 ### Disadvantages
 
-- It does not support hardware alarms (nobody cares ;-))
+- It does not support hardware alarms (nobody cares ;-) )
 
 ### Example
 
@@ -43,7 +43,7 @@
 }
 
 <span style="color: #CC6600;">void</span> <span style="color: #CC6600;"><b>loop</b></span>() {
-&nbsp;&nbsp;<span style="color: #7E7E7E;">// If the sesor measurement is ready, prnt the results</span>
+&nbsp;&nbsp;<span style="color: #7E7E7E;">// If the sesor measurement is ready, print the results</span>
 &nbsp;&nbsp;<span style="color: #CC6600;">if</span> (sensors.<span style="color: #CC6600;">available</span>())
 &nbsp;&nbsp;{
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #7E7E7E;">// Reads the temperature from sensor</span>
@@ -116,7 +116,7 @@ false
 - when the bus is physically damaged
 - when devices not respond
 - when device address is not valid
-- when not detect any device
+- when no devices detected
 
 <pre>
 sensors.<span style="color: #CC6600;">request</span>();
@@ -164,7 +164,7 @@ Return:
 
 true 
 
-- if operation were successful
+- if operation was successful
 
 false 
 
@@ -198,9 +198,9 @@ Return: temperature in degrees Celsius
 If the temperature is TEMP_ERROR value - measurement failed because:
 
 - the bus is physically damaged
-- devices not respond
-- when data from the device is not valid
-- when not detect device of thad address
+- devices are not responding
+- data from the device is not valid
+- no device found with given address
 
 <pre>
 sensors.<span style="color: #CC6600;">readTemperature</span>(<span style="color: #006699;">FA</span>(address));
@@ -235,6 +235,6 @@ Checks for errors and prints it on Serial Monitor with line number
 <span style="color: #006699;">TE</span>(temperature);
 
 </pre>
-Teperature value exception catcher
+Temperature value exception catcher
 Checks the wrong temperature and prints it on Serial Monitor with line number
 
